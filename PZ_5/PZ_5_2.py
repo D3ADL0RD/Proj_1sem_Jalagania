@@ -19,8 +19,11 @@ def digitCountSum(k):
     return c, s
 
 #Ввод значений
-num = int(input('Введите число: '))
-cRes, sRes = digitCountSum(num)
+i = 0
+while i < 5:
+    i += 1
+    num = int(input('Введите {}-ое число: '.format(i)))
+    cRes, sRes = digitCountSum(num)
 
-#Вывод результата
-print(('C: {}, S: {}').format(cRes, sRes))
+    # Вывод результата
+    print(('C: {}, S: {}').format(cRes, sRes))

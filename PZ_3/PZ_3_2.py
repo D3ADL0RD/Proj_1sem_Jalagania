@@ -20,7 +20,7 @@ tbl2 = {
     14: 'туз'
 }
 
-minVal, maxVal = 111, 444
+minVal, maxVal = 111, 414
 
 # Функция исполняет определение числа
 # из трехзначного числа.
@@ -29,26 +29,27 @@ minVal, maxVal = 111, 444
 def getDigit(number, n):
     return number // 10 ** n % 10
 
-num = input('Введите трехзначное число: ')
+num = input('Введите трехзначное число. Число не должно быть меньше {} и больше {}: '.format(minVal, maxVal))
 while type(num) != int:
     try:
         num = int(num)
+
+        if num > maxVal:
+            print('Введено слишком большое число - {}. Число не должно быть больше {}'.format(num, maxVal))
+            num = input('Введите трехзначное число. Число не должно быть меньше {} и больше {}: '.format(minVal, maxVal))
+        elif minVal > num:
+            print('Введено слишком маленькое число - {}. Число должно быть больше {}'.format(num, minVal))
+            num = input('Введите трехзначное число. Число не должно быть меньше {} и больше {}: '.format(minVal, maxVal))
     except ValueError:
         print('Введено не целое число!')
         num = input('Введите трехзначное число: ')
 
-if minVal < num < maxVal:
-    #Переводим последние две цифры в строку, для получения двузначного числа и снова переводим в число
-    #для вывода по ключу таблицы значения
-    secVal = int(str(getDigit(num, 1)) + str(getDigit(num, 0)))
+#Переводим последние две цифры в строку, для получения двузначного числа и снова переводим в число
+#для вывода по ключу таблицы значения
+secVal = int(str(getDigit(num, 1)) + str(getDigit(num, 0)))
 
-    #Проверка на наличие ключа в таблице
-    if secVal not in tbl2:
-        print("Ключа {} не существует в таблице".format(secVal))
-    else:
-        print(tbl2[secVal], tbl1[getDigit(num, 2)])
-
-elif num > maxVal:
-    print('Введено слишком большое число - {}. Число не должно быть больше {}'.format(num, maxVal))
-elif minVal > num:
-    print('Введено слишком маленькое число - {}. Число должно быть больше {}'.format(num, minVal))
+#Проверка на наличие ключа в таблице
+if secVal not in tbl2:
+    print("Ключа {} не существует в таблице".format(secVal))
+else:
+    print(tbl2[secVal], tbl1[getDigit(num, 2)])
