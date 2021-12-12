@@ -13,10 +13,10 @@ dictionary['напиток'] = 'лимонад'
 # Цикл на поиск ключа 'фрукт'
 for key in dictionary:
     if key != 'фрукт' and dictionary[key] != 'яблоко':
-        print(dictionary)
+        print('До', dictionary)
 
         dictionary.update({'фрукт':'яблоко'})
 
-        print(dictionary)
+        print('После', dictionary)
 
         break
