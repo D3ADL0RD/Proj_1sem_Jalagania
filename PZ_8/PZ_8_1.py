@@ -10,13 +10,12 @@ dictionary['овощи'] = 'огурец'
 dictionary['мясо'] = 'хамон'
 dictionary['напиток'] = 'лимонад'
 
-# Цикл на поиск ключа 'фрукт'
-for key in dictionary:
-    if key != 'фрукт' and dictionary[key] != 'яблоко':
-        print('До', dictionary)
+# Проверка на наличие ключа
+key = 'фрукт'
+keyValue = 'яблоко'
+if key not in dictionary or dictionary.get(keyValue) != 'яблоко':
+    print('До', dictionary)
 
-        dictionary.update({'фрукт':'яблоко'})
+    dictionary.update({'фрукт':'яблоко'})
 
-        print('После', dictionary)
-
-        break
+    print('После', dictionary)
