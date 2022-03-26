@@ -2,19 +2,16 @@
 # Из последовательности на n целых чисел создать новую последовательность, в
 # которой каждый последующий элемент равен квадрату суммы двух соседних элементов.
 n = 10
-nT = []
+firstTable = [i for i in range(n)]
 
-i = 0
-while i <= n:
-    nT.append(i)
-    i += 1
+secondTable = []
 
-iVal1 = lambda iVal1: iVal1 in nT and pow(iVal1, 2)
-iVal2 = lambda iVal2: iVal2 in nT and pow(iVal2, 2)
+print('До: ', firstTable)
 
-iVal = lambda x, y: x in nT and y in nT and pow(x, 2) + pow(y, 2)
+resultLambda = lambda i: i + 1 in firstTable and i + 2 in firstTable and pow(i + 1, 2) + pow(i + 2, 2)
 
-for i in nT:
-    res = iVal(i - 1, i - 2)
-    if res != False:
-        print(i, res)
+for i in firstTable:
+    if (i + 1 and i + 2) in firstTable:
+        secondTable.append(resultLambda(i))
+
+print('После:', secondTable)
