@@ -18,7 +18,7 @@ with open('ip_address.txt', 'r', encoding='utf-8') as source:
         if str_find != -1 and b_find == False:
             b_find = True
 
-        str_find_1 = i.find('Количество адресов подсети не равно количеству возможных узлов. Нулевой IP-адрес резервируется для идентификации подсети, последний — в качестве широковещательного адреса. Таким образом, в реально действующих сетях возможно количество узлов на два меньшее количества адресов.')
+        str_find_1 = i.find('Количество адресов подсети')
 
         if str_find_1 != -1:
             break
@@ -36,7 +36,7 @@ with open('ip_address.txt', 'r', encoding='utf-8') as source:
 with open('result_zero.txt', 'w') as location:
     count = 0
     for i in result_table:
-        location.writelines('{}\n'.format(i))
+        location.writelines('{}\n'.format(''.join(i)))
         count += 1
 
     print('В первом файле', count, 'строк')
@@ -44,7 +44,7 @@ with open('result_zero.txt', 'w') as location:
 with open('result.txt', 'w') as location:
     count = 0
     for i in second_result_table:
-        location.writelines('{}\n'.format(i))
+        location.writelines('{}\n'.format(''.join(i)))
         count += 1
 
     print('Во втором файле', count, 'строк')
