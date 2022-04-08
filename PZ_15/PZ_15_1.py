@@ -1,18 +1,18 @@
 # Вариант - 5
 # В матрице элементы второго столбца возвести в квадрат.
+from random import randint
 
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
+width, heigth = int(input('Введите ширину матрицы: ')), int(input('Введите длину матрицы: '))
 
+matrix = [[randint(1, 6) for j in range(width)] for i in range(heigth)]
 print('До:', matrix)
 
-mathPow = lambda index, key, value: key == 1 and (matrix[index].insert(key, pow(value, 2)), matrix[index].remove(value))
+math_pow = lambda key, value: key == 1 and pow(value, 2)
 
 for k, v in enumerate(matrix):
     for k1, v1 in enumerate(v):
-        mathPow(k, k1, v1)
+        res = math_pow(k1, v1)
+        if res:
+            matrix[k][k1] = res
 
 print('После:',matrix)
